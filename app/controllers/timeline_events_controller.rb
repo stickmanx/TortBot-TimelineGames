@@ -1,0 +1,130 @@
+class TimelineEventsController < ApplicationController
+  before_filter :authenticate_user!
+  
+  include MappedEvent
+  
+  def index
+    @page_title = "MY TIMELINE EVENTS"
+
+    @timeline_events = TimelineEvent.where(user_id:current_user.id) if user_signed_in?
+      
+    @timeline_event = TimelineEvent.new
+  end
+
+  def show
+    @timeline_event = TimelineEvent.find(params[:id])
+  end
+  
+  def edit
+    @page_title = "EDIT EVENT"
+
+    @timeline_event = TimelineEvent.find(params[:id])
+  end
+
+  def update
+    timeline_event = TimelineEvent.find(params[:id])
+    if timeline_event.update_attributes(params[:timeline_event])
+      redirect_to timeline_event_path(timeline_event.id)
+    else
+      render "edit"
+    end
+  end
+
+  def new
+    @timeline_event = TimelineEvent.new
+  end
+  
+  def create
+    timeline_event = TimelineEvent.new(params[:timeline_event])
+    
+    respond_to do |format|
+      if timeline_event.save
+        format.json {
+          render:json => {:status => "success"}
+        }
+      else
+        format.json {
+          render:json => {:status => "fail"}
+        }
+      end
+    end
+  end
+  
+  def destroy
+     timeline_event = TimelineEvent.find(params[:id])
+     timeline_event.destroy
+  
+     redirect_to timeline_events_path
+ 
+  
+  end
+  
+  def display_timeline
+    # puts current_user.id
+    events = TimelineEvent.where(user_id:(current_user.id)).all
+    # events = TimelineEvent.all
+    # puts events
+    # Mapped_Event.new.test_output
+    # mapped_event.test_output
+    timeline = process_timeline(events) 
+    updated_events = process_events(events, timeline[:max], timeline[:interval], timeline[:systems])
+    
+    
+    respond_to do |format|
+      format.json {
+        render :json => {hi: "Hello from the backend!", timeline: timeline, events: updated_events}
+        # render :json => {hi: "Hello from the backend!"}
+      }   
+    end
+    
+
+  end
+  
+  private
+    def process_timeline(events)
+      timeline = Hash.new
+      # find the min and max year to find the number of intervals
+      min = events.sort_by {|event| event[:start_date] }.first.start_date.year
+      max = events.sort_by {|event| event[:end_date] }.last.end_date.year
+      system_count = events.map {|event| event.game}.map {|game| game.system }.group_by {|system| system.name}.count
+      systems = events.map {|event| event.game}.map {|game| game.system }.group_by {|system| system.name}.keys
+    
+      # add timeline data to hash
+      timeline.merge!({:min=> min})
+      timeline.merge!({:max=> max+1})
+      timeline.merge!({:interval=> (max - min + 1)})
+      timeline.merge!({:system_count=> system_count})
+      timeline.merge!({:systems=> systems})
+    
+    
+      # debug timeline hash
+      # puts timeline
+    
+      # return timeline data
+      timeline
+    end
+    
+    def process_events(events, max, intervals, systems)
+      # event array container
+      processed_events = []
+      
+      counter = 1
+      events.each do |event|
+
+        if event.image_link
+          image = event.image_link.url
+        else
+          image = nil
+        end
+
+        # create new mapped event to timeline
+        new_event = Mapped_Event.new(event.game.id, event.game.name, event.start_date, event.end_date, image, event.game.system.name, max, intervals, systems, counter, event.id, event.completion)
+        puts new_event
+        # add events to container
+        processed_events.push new_event
+        counter = counter + 1
+        puts counter
+      end
+      processed_events
+    end
+end

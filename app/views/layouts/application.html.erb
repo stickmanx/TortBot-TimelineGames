@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TimelineRails3</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <link href='http://fonts.googleapis.com/css?family=Geo' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Unica+One' rel='stylesheet' type='text/css'>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<div>
+				<div class="title pull-left">
+					<h1><%= link_to "TORTBOT", timelines_path %></h1>
+				</div>
+				<div class="user_account pull-right">
+					<% if user_signed_in? %>
+						<%= current_user.email %> |
+						<%= link_to 'Edit Profile', edit_user_registration_path %> |
+						<%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+					<% else %>
+						<%= link_to "Sign up", new_user_registration_path %> |
+						<%= link_to "Login", new_user_session_path %>
+					
+						<% flash.each do |name, msg| %>
+							<%= content_tag :div, msg, id: "flash_#{name}" %>
+						<% end %>
+					<% end %>
+				</div> <!-- user_nav -->
+				<% if user_signed_in? %>
+				<div class="user_nav">
+					<ul class="">
+						<li><%= link_to "EXPLORE GAMES", games_path %></li>
+						<li><%= link_to "TIMELINE", timelines_path %></li>
+						<li><%= link_to "MY GAMES", timeline_events_path %></li>
+					</ul>
+				</div>
+				<% end %>
+			</div>
+		</div> <!-- header -->
+		<div class="page_header">
+			<div>
+				<div><h2><%= @page_title %></h2></div>
+			</div>
+
+
+		</div> <!-- page_header -->
+		<div class="content_holder">
+			<div class="content_top">
+				<div id="canvas_console"></div>
+			</div>
+
+			<div class="content_left pull-left">
+				<div id="canvas_intervals"></div>
+			</div>
+
+			<div class="main_content">
+			<%= yield %>
+			</div>
+
+			
+		</div>
+		<%= render "footer/footer" %>
+	</div>
+</body>
+</html>

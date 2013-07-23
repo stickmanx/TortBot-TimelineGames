@@ -1,0 +1,13 @@
+<h1>Timelines#show</h1>
+<p>Find me in app/views/timelines/show.html.erb</p>
+
+<h3>Game Name: <%= @timeline_event.game.name %></h3>
+<p>Start Date: <%= @timeline_event.start_date %></p>
+<p>End Date: <%= @timeline_event.end_date %></p>
+
+<% if defined? @timeline_event.image_link.url %>
+	<img src="<%= @timeline_event.image_link.url %>" alt="game image">
+<% end %>
+
+<%= link_to "Update Event", edit_timeline_event_path(@timeline_event.id)%>
+<%= link_to "Home", timelines_path %>

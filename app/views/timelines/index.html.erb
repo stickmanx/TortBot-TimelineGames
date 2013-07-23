@@ -1,0 +1,34 @@
+<form id="display_canvas" action="/timeline_events/display_timeline" method="post">
+	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+<!-- 	<input type="submit" value="display_form"> -->
+</form>
+
+<div class="button_container">
+	<button id="button_add_event" class="button"><strong>+</strong> timeline event</button>
+</div>
+
+
+
+
+<!-- <div class="add_timeline_event_container"> -->
+	<div id="add_timeline_event">
+		<div>
+		<%= simple_form_for @timeline_event, html: {:id => "new_timeline_event_form"} do |f| %>
+			<%= f.hidden_field :user_id, :value => current_user.id %>
+			<label for="game_name" class="pull-left label">Search Games</label>
+			<input type="text" class="game_search input-field pull-left clear" name="game_name">
+			<div id="game_id"></div>
+			<%= f.input :start_date, :start_year => 1970, :end_year => Date.today.year %>
+			<%= f.input :end_date, :start_year => 1970, :end_year => Date.today.year %>
+			<%= f.button :submit, :value => "create timeline event", :class=> "button pull-left clear" %>
+		<% end %>
+		<a class="close pull-right clear" href="javascript:closeAddTimelineEvent()">close</a>
+		</div>
+	</div>	
+<!-- </div> -->
+
+<div id="canvas_container" style="overflow: auto;">
+	<div id="canvas_area"></div>
+
+</div>
+

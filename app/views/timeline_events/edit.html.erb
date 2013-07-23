@@ -1,0 +1,15 @@
+<h3><%= @timeline_event.game.name %></h3>
+
+<%= simple_form_for @timeline_event do |f| %>
+	<%= f.hidden_field :user_id, :value => current_user.id %>
+	<%= f.input :start_date, :start_year => 1970, :end_year => Date.today.year %>
+	<%= f.input :end_date, :start_year => 1970, :end_year => Date.today.year %>
+	<%= f.input :completion %>
+	<%= f.association :image_link, collection: ImageLink.where(game_id:@timeline_event.game.id ), input_html: {id: 'game_select'} ,:prompt => "--Select Image--"%>
+	<%= f.button :submit, :class=> "button", :value=> "Update Event" %>
+<% end %>
+
+<%= simple_form_for @timeline_event, :method => (:delete) do |f| %>
+	<%= f.button :submit, :value=> "Delete Event", :class=> "button" %>
+<% end %>
+<%= link_to "Back", :back, :class=> "button remove_text_dec" %>

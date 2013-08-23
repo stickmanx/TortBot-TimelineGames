@@ -91,7 +91,7 @@ $(document).ready(function() {
 
 				// $('#canvas_console').prepend(data.timeline.content);
 			
-			$('#canvas_console').prepend("<canvas id='systems' width='1060' height='40' style='background-color:#2D2D2D;'></canvas>");
+			$('#canvas_console').html("<canvas id='systems' width='1060' height='40' style='background-color:#2D2D2D;'></canvas><button id='button_add_event'><span>+</span></button>");
 			console_init(data.timeline.system_count, data.timeline.systems)
 			
 			$('#canvas_intervals').html("<canvas id='intervals' width='100' height='"+((data.timeline.interval*400)+100)+"'></canvas>");
@@ -130,10 +130,10 @@ $(document).ready(function() {
 	// Add Timeline Event
 	$('#add_timeline_event').hide();
 	
-	// $(body).on('click', '#button_add_event', function() {
+	$('#canvas_console').on('click', '#button_add_event', function() {
 	// 	$('#add_timeline_event').fadeIn();
 	// });
-	$('#button_add_event').click(function() {
+	//$('#button_add_event').click(function() {
 		$('#add_timeline_event').fadeIn();
 	});
 
@@ -193,6 +193,7 @@ $(document).ready(function() {
 
   	});
 
+  	// date pickers for both editing and creating new timeline events
   	$( ".startdatepicker" ).datepicker({
       changeMonth: true,
       changeYear: true,
@@ -201,6 +202,7 @@ $(document).ready(function() {
       dateFormat: "yy-mm-dd"
     });
 
+  	// date pickers for both editing and creating new timeline events
     $( ".enddatepicker" ).datepicker({
       changeMonth: true,
       changeYear: true,
@@ -209,12 +211,11 @@ $(document).ready(function() {
       dateFormat: "yy-mm-dd"
     });
 
+    // image selection for a timeline event
     $("#image_select").selectable({
     	selected: function() {
-    		// var result = $("#image_result").empty();
     		$(".ui-selected", this ).each(function() {
     			var index = $("#image_select li img").index( this );
-    			//var test = $(this).attr("alt");
     			$("#image_result").html("<input type=hidden name=timeline_event[image_link_id] value="+$(this).attr("data-imageid")+">");
     		});
     	}

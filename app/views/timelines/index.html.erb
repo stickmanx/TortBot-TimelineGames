@@ -19,10 +19,10 @@
 			<label for="game_name" class="pull-left label">SEARCH GAMES</label>
 			<input type="text" class="game_search input-field pull-left clear" name="game_name">
 			<div id="game_id"></div>
-			<label for="timeline_event[start_date]">START DATE</label>
-			<input type="text" class="startdatepicker input-field pull-left clear" name="timeline_event[start_date]">
 			<label for="timeline_event[end_date]">END DATE</label>
 			<input type="text" class="enddatepicker input-field pull-left clear" name="timeline_event[end_date]">
+			<label for="timeline_event[start_date]">START DATE</label>
+			<input type="text" class="startdatepicker input-field pull-left clear" name="timeline_event[start_date]">
 			<%= f.button :submit, :value => "create timeline event", :class=> "button pull-left clear" %>
 		<% end %>
 		<a class="close pull-right clear" href="javascript:closeAddTimelineEvent()">close</a>

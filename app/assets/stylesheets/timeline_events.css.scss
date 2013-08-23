@@ -167,7 +167,8 @@ div.new_timeline_event_page {
 	}
 }
 
- #image_select .ui-selecting { background: white; }
- #image_select .ui-selected { background: #5298C9; color: white; }
- #image_select { list-style-type: none; margin: 0; padding: 0; width: 60%; }
- #image_select li { margin: 3px; padding: 0.4em; font-size: 1.4em; width: 200px; }
+/* Image selector for timeline events  ------------------------------------ */
+#image_select .ui-selecting { background: white; }
+#image_select .ui-selected { background: #5298C9; color: white; }
+#image_select { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+#image_select li { margin: 3px; padding: 0.4em; font-size: 1.4em; width: 200px; }

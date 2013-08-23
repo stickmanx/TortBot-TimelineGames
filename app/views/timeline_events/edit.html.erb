@@ -10,10 +10,10 @@
 	<div class="form-inputs">
 		<%= f.hidden_field :user_id, :value => current_user.id %>
 		<div class="date-selection">
-			<label for="timeline_event[start_date]">START DATE</label>
-			<input type="text" class="startdatepicker" name="timeline_event[start_date]" value='<%= @timeline_event.start_date %>'>
 			<label for="timeline_event[end_date]">END DATE</label>
 			<input type="text" class="enddatepicker" name="timeline_event[end_date]" value='<%= @timeline_event.end_date %>'>
+			<label for="timeline_event[start_date]">START DATE</label>
+			<input type="text" class="startdatepicker" name="timeline_event[start_date]" value='<%= @timeline_event.start_date %>'>
 		</div>
 		<div id="image_result"></div>
 	</div>

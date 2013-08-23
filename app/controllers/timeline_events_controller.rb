@@ -49,18 +49,26 @@ class TimelineEventsController < ApplicationController
   def create
     timeline_event = TimelineEvent.new(params[:timeline_event])
     puts timeline_event
-    respond_to do |format|
-      # if timeline_event.has_game?(timeline_event.name) && timeline_event.save
-      if timeline_event.save
-        format.json {
-          render:json => {:status => "success"}
-        }
-      else
-        format.json {
-          render:json => {:status => "fail"}
-        }
-      end
-    end
+
+    if timeline_event.save
+      redirect_to timelines_path
+    else
+      redirect_to timelines_path
+    end    
+
+    # AJAX
+    # respond_to do |format|
+    #   # if timeline_event.has_game?(timeline_event.name) && timeline_event.save
+    #   if timeline_event.save
+    #     format.json {
+    #       render:json => {:status => "success"}
+    #     }
+    #   else
+    #     format.json {
+    #       render:json => {:status => "fail"}
+    #     }
+    #   end
+    # end
   end
   
   def destroy

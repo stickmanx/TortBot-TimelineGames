@@ -141,19 +141,19 @@ $(document).ready(function() {
 	// up top
 
 	// Add Timeline Ajax
-	$('#new_timeline_event_form').submit(function() {
-		console.log("Test");
-		$.post(
-			$(this).attr('action'),
-			$(this).serialize(),
-			function(data) {
-				console.log(data);
-			},
-			'json'
-		);
-		$('#display_my_canvas').submit();
-		return false;
-	});
+	// $('#new_timeline_event_form').submit(function() {
+	// 	console.log("Test");
+	// 	$.post(
+	// 		$(this).attr('action'),
+	// 		$(this).serialize(),
+	// 		function(data) {
+	// 			console.log(data);
+	// 		},
+	// 		'json'
+	// 	);
+	// 	$('#display_my_canvas').submit();
+	// 	return false;
+	// });
 
 	// Add Timeline Event Ajax (needs ajax in the back)
 	// $('#new_timeline_event_form').submit(function() {

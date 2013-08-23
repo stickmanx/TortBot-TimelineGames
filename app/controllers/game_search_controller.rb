@@ -3,7 +3,7 @@ class GameSearchController < ApplicationController
     if params[:term]
       like = "%".concat(params[:term].concat("%"))
       # games = Game.where("games.name like ?", like).limit(10).joins("LEFT JOIN systems ON systems.id = games.system_id").select("games.id, games.name, systems.name as system_name")
-      games = Game.includes(:system).where("games.name like ?", like).limit(10)
+      games = Game.includes(:system).where("games.name ilike ?", like).limit(10)
     else
       games = Game.all
     end

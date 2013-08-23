@@ -18,17 +18,27 @@ class TimelineEventsController < ApplicationController
   def edit
     @timeline_event = TimelineEvent.find(params[:id])
     @image_link = ImageLink.new
+
+    @images = ImageLink.where(game_id:@timeline_event.game.id)
   end
 
   def update
     timeline_event = TimelineEvent.find(params[:id])
-    puts timeline_event
+    
+    # For Debugging --------------------------------------------------------
+    # puts "Image Link ID:"
+    # puts params[:timeline_event]
+    # ----------------------------------------------------------------------
+
+    # check to see if the image is undefined, if it is leave it blank
+    if params[:timeline_event][:image_link_id] == 'undefined'
+      params[:timeline_event][:image_link_id] = ''
+    end
+
     if timeline_event.update_attributes(params[:timeline_event])
       redirect_to :back
-      # redirect_to timeline_event_path(timeline_event.id)
     else
       redirect_to :back
-      # render "edit"
     end
   end
 

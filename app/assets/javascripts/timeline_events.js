@@ -197,14 +197,27 @@ $(document).ready(function() {
       changeMonth: true,
       changeYear: true,
       minDate: new Date(2005, 1 - 1, 1),
-      maxDate: new Date(2014, 1 - 1, 1)
+      maxDate: new Date(2014, 1 - 1, 1),
+      dateFormat: "yy-mm-dd"
     });
 
     $( ".enddatepicker" ).datepicker({
       changeMonth: true,
       changeYear: true,
       minDate: new Date(2005, 1 - 1, 1),
-      maxDate: new Date(2014, 1 - 1, 1)
+      maxDate: new Date(2014, 1 - 1, 1),
+      dateFormat: "yy-mm-dd"
+    });
+
+    $("#image_select").selectable({
+    	selected: function() {
+    		// var result = $("#image_result").empty();
+    		$(".ui-selected", this ).each(function() {
+    			var index = $("#image_select li img").index( this );
+    			//var test = $(this).attr("alt");
+    			$("#image_result").html("<input type=hidden name=timeline_event[image_link_id] value="+$(this).attr("data-imageid")+">");
+    		});
+    	}
     });
 
 });

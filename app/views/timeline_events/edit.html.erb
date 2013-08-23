@@ -15,10 +15,7 @@
 			<label for="timeline_event[end_date]">END DATE</label>
 			<input type="text" class="enddatepicker" name="timeline_event[end_date]" value='<%= @timeline_event.end_date %>'>
 		</div>
-		<div class="image-selection">
-		<%= f.input :completion, :label => "COMPLETION" %>
-		<%= f.association :image_link, collection: ImageLink.where(game_id:@timeline_event.game.id ), input_html: {id: 'game_select'} ,:prompt => "--Select Image--", :label => "EVENT IMAGE" %>
-		</div>
+		<div id="image_result"></div>
 	</div>
 
 	<div class="form-actions">
@@ -49,5 +46,17 @@
 <div class="timeline_event_edit_images">
 	<div class="line-break"></div>
 	<h2>Images</h2>
-
+	<ul id="image_select">
+		<% @images.each do |image| %>
+			<% if @timeline_event.image_link != nil %>
+				<% if image.id == @timeline_event.image_link.id %>
+					<li class="ui-widget-content ui-selected" data-imageid=<%= image.id %>><img src=<%= image.url %> style="width:200px"></li>
+				<% else %>
+					<li class="ui-widget-content" data-imageid=<%= image.id %>><img src=<%= image.url %> style="width:200px"></li>
+				<% end %>
+			<% else %>
+				<li class="ui-widget-content" data-imageid=<%= image.id %>><img src=<%= image.url %> style="width:200px"></li>
+			<% end %>
+		<% end %> 
+	</ul>
 </div>

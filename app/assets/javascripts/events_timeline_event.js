@@ -40,6 +40,7 @@ p.initialize = function(label, color, width, height, image, event_id) { // custo
 	content.regY = 0;
 	
 	this.addChild(this.background, content, text);
+	// this.addChild(this.background, text);
 	// this.addEventListener("click", this.handleClick);  // listen to clicks
 } 
 

@@ -1,0 +1,64 @@
+// Place all the styles related to the friendships controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+div.friend_users {
+	font-family: Arial;
+	width:450px;
+	h2 {
+		padding:0px;
+		margin:20px 0px 0px 0px;
+		font-family: Arial;
+		font-size:26px;
+	}
+	ul {
+		list-style-type: none;
+		padding:0px;
+		margin:10px 0px 0px 0px;
+		li {
+			font-size:14px;
+			margin:5px 0px 0px 0px;
+		}
+	}
+}
+
+
+div.friends_added {
+	font-family: Arial;
+	width:600px;
+	h2 {
+		padding:0px;
+		margin:20px 0px 0px 0px;
+		font-family: Arial;
+		font-size:26px;
+	}
+	ul {
+		list-style-type: none;
+		padding:0px;
+		margin:10px 0px 0px 0px;
+		li {
+			font-size:14px;
+			margin:5px 0px 0px 0px;
+		}
+	}
+}
+
+div.friends_by {
+	font-family: Arial;
+	width:600px;
+	h2 {
+		padding:0px;
+		margin:20px 0px 0px 0px;
+		font-family: Arial;
+		font-size:26px;
+	}
+	ul {
+		list-style-type: none;
+		padding:0px;
+		margin:10px 0px 0px 0px;
+		li {
+			font-size:14px;
+			margin:5px 0px 0px 0px;
+		}
+	}
+}

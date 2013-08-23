@@ -1,15 +1,53 @@
-<h3><%= @timeline_event.game.name %></h3>
+<% provide(:title, "Edit Timeline Event") %>
+<% @page_title = "EDIT EVENT" %>
 
-<%= simple_form_for @timeline_event do |f| %>
-	<%= f.hidden_field :user_id, :value => current_user.id %>
-	<%= f.input :start_date, :start_year => 1970, :end_year => Date.today.year %>
-	<%= f.input :end_date, :start_year => 1970, :end_year => Date.today.year %>
-	<%= f.input :completion %>
-	<%= f.association :image_link, collection: ImageLink.where(game_id:@timeline_event.game.id ), input_html: {id: 'game_select'} ,:prompt => "--Select Image--"%>
-	<%= f.button :submit, :class=> "button", :value=> "Update Event" %>
-<% end %>
 
-<%= simple_form_for @timeline_event, :method => (:delete) do |f| %>
-	<%= f.button :submit, :value=> "Delete Event", :class=> "button" %>
-<% end %>
-<%= link_to "Back", :back, :class=> "button remove_text_dec" %>
+<div class="timeline_event_edit">
+	<div class="line-break"></div>
+	<h3><%= @timeline_event.game.name %></h3>
+
+	<%= simple_form_for @timeline_event, :method => "put" do |f| %>
+	<div class="form-inputs">
+		<%= f.hidden_field :user_id, :value => current_user.id %>
+		<div class="date-selection">
+			<label for="timeline_event[start_date]">START DATE</label>
+			<input type="text" class="startdatepicker" name="timeline_event[start_date]" value='<%= @timeline_event.start_date %>'>
+			<label for="timeline_event[end_date]">END DATE</label>
+			<input type="text" class="enddatepicker" name="timeline_event[end_date]" value='<%= @timeline_event.end_date %>'>
+		</div>
+		<div class="image-selection">
+		<%= f.input :completion, :label => "COMPLETION" %>
+		<%= f.association :image_link, collection: ImageLink.where(game_id:@timeline_event.game.id ), input_html: {id: 'game_select'} ,:prompt => "--Select Image--", :label => "EVENT IMAGE" %>
+		</div>
+	</div>
+
+	<div class="form-actions">
+		<%= f.button :submit, :class=> "button", :value=> "Update Event" %>
+	</div>
+	<% end %>
+
+	<div class="event-links" >
+	<%= simple_form_for @timeline_event, :method => (:delete) do |f| %>
+		<%= f.button :submit, :value=> "Delete Event", :class=> "button" %>
+	<% end %>
+
+	<%= link_to "Back", :back %>
+	</div>
+</div>
+
+<div class="timeline_event_edit_image">
+	<div class="line-break"></div>
+	<h2>Submit an Image</h2>
+	<%= simple_form_for @image_link, :url => "../../image_links", :method => "post" do |f| %>
+		<%= f.input :url, :label => "LINK TO IMAGE" %>
+		<%= f.hidden_field :game_id, :value => @timeline_event.game.id %>
+		<%= f.hidden_field :user_id, :value => current_user.id %>
+		<%= f.button :submit, :class=> "button"%>
+	<% end %>
+</div>
+
+<div class="timeline_event_edit_images">
+	<div class="line-break"></div>
+	<h2>Images</h2>
+
+</div>

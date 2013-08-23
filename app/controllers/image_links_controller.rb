@@ -15,9 +15,10 @@ class ImageLinksController < ApplicationController
     image_link = ImageLink.new(params[:image_link])
     
     if image_link.save
-      redirect_to image_link_path(image_link.id)
+      redirect_to :back
+      # redirect_to image_link_path(image_link.id)
     else
-      render "new"
+      redirect_to :back
     end
   end
 end

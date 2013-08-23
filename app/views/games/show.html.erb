@@ -1,3 +1,64 @@
+<% provide(:title, @game.name) %>
+<% @page_title = "GAME" %>
+<div class="game pull-left">
+	<div class="line-break"></div>
+	<h2><%= @game.name %></h2>
+	<p>System: <%= @game.system.name %></p>
 
-<h2>Game Name:<%= @game.name %></h2>
-<p>System: <%= @game.system.name %></p>
+	<% if signed_in? %>
+		<%= simple_form_for @comment do |f| %>
+		<%= f.hidden_field :user_id, :value => current_user.id %>
+		<%= f.hidden_field :game_id, :value => @game.id %>
+		<%= f.text_area :context, :label => "Game Description", :class => "description-box pull-left" %>
+		<%= f.button :submit, :class => "button pull-left" %>
+		<% end %>
+	<% end %>
+</div>
+
+<div class="game_descriptions pull-right">
+	<div class="line-break"></div>
+	<h2>Game Descriptions</h2>
+
+	<% if @comments.empty? %>
+		<div class="description">
+			<p>0 descriptions found</p>
+		</div>
+	<% else %>
+	<% @comments.each do |comment| %>
+		<div class="description">
+			<div class="context">
+				<p><%= comment.context %><p>
+				<% like = Like.where(user_id:current_user.id, likeable_id:comment.id, likeable_type:"Comment") %>
+				<p><span class="by_user">By: <%= comment.user.email %></span>
+					<% if comment.user_id == current_user.id %>
+						<%= link_to "remove description", comment_path(comment.id), :method => :delete %>
+					<% end %>
+					<p>
+
+			</div>
+			<div class="likes">
+				
+				<div>
+				<% if like.empty? %>
+					<%= simple_form_for @like do |f| %>
+						<%= f.hidden_field :user_id, :value => current_user.id %>
+						<%= f.hidden_field :likeable_id, :value => comment.id %>
+						<%= f.hidden_field :likeable_type, :value => "Comment" %>
+						<%= f.button :submit, :value => "+", :class => "button_like" %>
+					<% end %>
+				<% else %>
+					<%= simple_form_for @like, :url => "/likes/"+like.first.id.to_s, :method => :delete do |f| %>
+						<%= f.hidden_field :user_id, :value => current_user.id %>
+						<%= f.hidden_field :likeable_id, :value => comment.id %>
+						<%= f.hidden_field :likeable_type, :value => "Comment" %>
+						<%= f.button :submit, :value => "-", :class => "button_like" %>
+					<% end %>
+				<% end %>
+				</div>
+				<p><%= comment.likes.count %></p>
+			</div>
+			<div class="clear"></div>
+		</div>
+	<% end %>
+	<% end %>
+</div>

@@ -1,0 +1,18 @@
+<% provide(:title, "Users Timeline") %>
+<form id="display_user_canvas" action="/timelines/display_user_timeline" method="post">
+	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+	<input name="user_id" value="<%= @user_id %>" type="hidden">
+<!-- 	<input type="submit" value="display_form"> -->
+</form>
+
+<div class="content_top">
+	<div id="canvas_console"></div>
+</div>
+
+<div class="content_left pull-left">
+	<div id="canvas_intervals"></div>
+</div>
+
+<div id="canvas_container" style="overflow: auto;">
+	<div id="canvas_area"></div>
+</div>

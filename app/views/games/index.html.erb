@@ -1,10 +1,10 @@
+<div class="line-break"></div>
 <div class="game-search center">
-	<div class="line-break"></div>
 	<form id="game_preview" method="post" action="/games/preview">
 		<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 		<label for="game_name" class="pull-left label">GAME NAME</label>
 		<input type="text" class="game_search input-field pull-left clear" name="game_name">
-		<input type="submit" value="Search" class="button pull-left clear">
+		<input type="submit" value="Select" class="button pull-left clear">
 		<div id="game_id"></div>
 	</form>
 </div>

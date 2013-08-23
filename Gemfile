@@ -8,6 +8,7 @@ gem 'rails', '3.2.13'
 
 group :development do
   gem 'sqlite3'
+  gem 'rails-footnotes', '>= 3.7.9'
 end
 
 # Gems used only for assets and not required

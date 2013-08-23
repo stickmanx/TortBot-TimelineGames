@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TimelineRails3</title>
+  <title><%= full_title(yield(:title)) %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <link href='http://fonts.googleapis.com/css?family=Geo' rel='stylesheet' type='text/css'>
@@ -35,6 +35,7 @@
 						<li><%= link_to "EXPLORE GAMES", games_path %></li>
 						<li><%= link_to "TIMELINE", timelines_path %></li>
 						<li><%= link_to "MY GAMES", timeline_events_path %></li>
+						<li><%= link_to "FRIENDS", friendships_path %></li>
 					</ul>
 				</div>
 				<% end %>
@@ -48,16 +49,16 @@
 
 		</div> <!-- page_header -->
 		<div class="content_holder">
-			<div class="content_top">
-				<div id="canvas_console"></div>
-			</div>
-
-			<div class="content_left pull-left">
-				<div id="canvas_intervals"></div>
-			</div>
 
 			<div class="main_content">
-			<%= yield %>
+<!-- 				<div class="content_top">
+					<div id="canvas_console"></div>
+				</div>
+
+				<div class="content_left pull-left">
+					<div id="canvas_intervals"></div>
+				</div> -->
+				<%= yield %>
 			</div>
 
 			

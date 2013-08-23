@@ -1,0 +1,23 @@
+<% provide(:title, "Sign Up") %>
+<% @page_title = "Sign Up" %>
+<div class="user_session">
+
+<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :email, :label => "EMAIL", :required => true, :autofocus => true %>
+    <%= f.input :password,:label => "PASSWORD", :required => true %>
+    <%= f.input :password_confirmation, :label => "PASSWORD CONFIRMATION", :required => true %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Sign up", :class => "button" %>
+  </div>
+<% end %>
+
+	<div class="user-links">
+		<%= render "devise/shared/links" %>
+	</div>
+
+</div>

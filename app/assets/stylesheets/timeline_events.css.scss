@@ -1,3 +1,166 @@
 // Place all the styles related to the Timeline_Events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* index.html.erb */
+div.timeline-events-page { 
+	margin:0px 0px 0px 0px;
+
+	h2 {
+		padding:0px;
+		margin:20px 0px 0px 0px;
+		font-family: Arial;
+		font-size:26px;		
+	}
+	a {
+		text-decoration: none;
+	}
+
+	table.my_events
+	{
+		border-top:1px solid black;
+		margin:20px 0px 0px 0px;
+		width:1100px;
+		tr {
+			/*background-color:red;*/
+		}
+		th {
+			width: 200px;
+			text-align: left;
+			font-family: Arial, Tahoma, Verdana, Segoe, sans-serif;
+		} 
+
+		td {
+			background-color:#d4d4d4;
+			border-radius:2px;
+			font-family: Arial, Tahoma, Verdana, Segoe, sans-serif;
+			font-size:14px;
+			margin:0px;
+			padding: 2px;
+		} 
+	} 
+}
+
+/*  edit.html.erb  ------------------------------- */
+div.timeline_event_edit {
+	width:500px;
+	float:left;
+	h3 {
+		padding:0px;
+		margin:20px 0px 0px 0px;
+		font-family: Arial;
+		font-size:26px;
+
+	}
+	div.form-inputs {
+
+		label {
+			float:left;
+			clear:both;
+			font-family:Arial;
+			font-size:13px;
+			margin:10px 0px 6px 0px;
+		}
+		input {
+			float:left;
+			clear:both;
+			width:400px;
+			background-color:#F0F0F0;
+			border:1px solid #CFCFCF;
+			height:40px;
+			font-size:24px;
+			font-family:Arial;
+			outline:none;
+
+		}
+
+		.image-selection {
+			float:left;
+			clear:both;
+			select {
+				float:left;
+				clear:both;
+			}
+		}
+	}
+
+	div.form-actions {
+		float:left;
+		clear:both;
+	}
+
+	div.event-links {
+		margin:0px 0px 0px 0px;
+		float:left;
+		clear:both;
+		a {
+			color: #2D2D2D;
+			font-family:Arial;
+		}
+	}
+}
+
+div.timeline_event_edit_image {
+	float:right;
+	width: 550px;
+	h2 {
+		padding:0px;
+		margin:20px 0px 0px 0px;
+		font-family: Arial;
+		font-size:26px;
+	}
+	label {
+		float:left;
+		clear:both;
+		font-family:Arial;
+		font-size:13px;
+		margin:10px 0px 6px 0px;
+	}
+	textarea {
+		width:550px;
+		height:60px;
+	}
+
+	input {
+		float:left;
+		clear:both;
+
+	}
+}
+
+div.timeline_event_edit_images {
+	margin:30px 0px 0px 0px;
+	float:left;
+	clear:both;
+	width:1100px;
+	h2 {
+		padding:0px;
+		margin:20px 0px 0px 0px;
+		font-family: Arial;
+		font-size:26px;
+	}
+
+}
+
+
+
+
+
+
+div.new_timeline_event_page {
+
+	.simple_form label
+	{
+		float:left;
+		font-family:Arial;
+		font-size:13px;
+		margin:10px 0px 6px 0px;
+		clear:both;		
+		padding:0px;
+	}
+	.simple_form div.input
+	{
+		float:left;
+		clear:left;
+	}
+}

@@ -48,181 +48,11 @@ div.splash_title
 	}
 
 
-/* Header Start */
-.header 
-{
-	background-color:black;
-	/*background-color:#5298C9;*/
-	height:70px;
-	color: white;
-	position:fixed;
-	width:100%;
-	z-index: 10;
-}
 
-	.header div
-	{
-		width:1100px;
-		height:70px;
-		margin:0 auto;
-		position:relative;
-	}
-
-		.header div .title
-		{
-			width:300px;
-			/*background-color:yellow;*/
-			position:absolute;
-			top:50%;
-			height:34px;
-			margin:-22px 0px 0px 0px;
-		}	
-
-			.header div h1
-			{
-				margin:0px;
-				padding:0px;
-				font-size:40px;
-
-			}
-
-			.header div h1 a
-			{
-				text-decoration: none;
-				color: white;
-				/*font-family:"Impact";*/
-				font-family: 'Geo', Impact, sans-serif;
-
-			}
-
-		.header .user_nav
-		{
-			/*background-color:orange;*/
-			text-align: right;
-			width:500px;
-			height:22px;
-			position:absolute;
-			top:50%;
-			margin:-7px 0px 0px 0px;
-			right:0;
-			z-index:200;
-
-			
-		}
-
-			.header .user_nav ul
-			{
-				list-style-type: none;
-				padding:0px;
-				margin:0px;
-				
-
-			}
-
-			.header .user_nav ul li
-			{
-				display:inline-block;
-				padding:0px;
-				margin:0px 15px 0px 0px;
-			}
-
-			.header .user_nav ul li:last-child
-			{
-				margin:0px;
-			}
-
-			.header .user_nav ul li a
-			{
-				text-decoration: none;
-				color:white;
-				font-size:16px;
-				font-family:tahoma;
-				font-weight: lighter;
-			}
-
-		.header div .user_account
-		{
-			/*background-color:green;*/
-			width:500px;
-			color: white;
-			text-align: right;
-			font-size:13px;
-			font-family:tahoma;
-		}
-
-			.header a
-			{
-				text-decoration: none;
-				color:white;
-				font-family:tahoma;
-				
-
-			}
 
 /* End Header*/
 
-/* Page Header Start*/
 
-.page_header
-{
-	height:70px;
-	/*box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.15);*/
-	position:fixed;
-	margin:70px 0px 0px 0px;
-	width:100%;
-	z-index:10;
-	background-color:#ECECEC;
-
-	/*border-bottom:1px solid #CCCCCC;*/
-}
-
-	.page_header div
-	{
-		width:1100px;
-		height:70px;
-		margin:0 auto;
-		position:relative;
-	}
-
-	.page_header div div
-	{
-		position:absolute;
-		/*background-color:green;*/
-		height:30px;
-		top:50%;
-		margin:-14px 0px 0px 0px;
-		width:400px;
-	}
-
-	.page_header h2
-	{
-		margin:0px;
-		font-size:26px;
-		font-family: tahoma;
-		/*font-family: 'Strait', sans-serif;*/
-		/*font-family:Arial;*/
-		font-weight: 100;
-	}
-
-	#button_add_event
-	{
-/*		position:absolute;
-		right:0;
-		z-index:300;*/
-		/*bottom:100%;*/
-		width:160px !important;
-		margin-left:940px;
-		position:fixed;
-		z-index:500;
-		margin-top:-67px;
-		/*background-color:gray;*/
-		background-color:#5298C9;
-		/*color:black;*/
-		
-
-	}
-
-/* Page Header End */
 
 .content_holder
 {
@@ -232,10 +62,10 @@ div.splash_title
 
 	.content_top
 	{
-		padding:140px 0px 0px 0px;
-		position:fixed;
+		/*padding:140px 0px 0px 0px;*/
+		/*position:fixed;*/
 		z-index:2;
-		background-color:black;
+		background-color:#2D2D2D;
 
 	}
 
@@ -243,7 +73,7 @@ div.splash_title
 	{
 		float:left;
 		color:black !important;
-		padding:150px 0px 0px 0px;
+		padding:0px 0px 0px 0px;
 		/*background-color:blue;*/
 		width:50px;
 		margin:0px 0px 0px -60px;
@@ -254,9 +84,11 @@ div.splash_title
 	{
 		float:left;
 		width:1100px;
+		min-height:500px;
 		/*margin:0 auto;*/
 		background-color:white;
-		padding:150px 0px 0px 0px;
+		padding:0px 0px 0px 0px;
+		margin:30px 0px 50px 0px;
 	}
 
 		.main_content .button_container
@@ -272,274 +104,10 @@ div.splash_title
 
 
 
-/*.add_timeline_event_container*/
-#add_timeline_event
-{
-	border:3px solid black;
-	/*border-radius: 15px;*/
-	background-color:white;
-	position:fixed;
-	width:400px;
-	right:50%;
-	margin:0px -200px;
-	height:280px;
-	z-index:10;
-}
-
-
-	#add_timeline_event a
-	{
-		text-decoration: none;
-	}
-
-	#add_timeline_event .close
-	{
-		border: 0;
-		background-color:black;
-		background-color:#5298C9;
-		color:white;
-		padding:14px;
-		font-size: 14px;
-		font-family:Arial;
-		margin:10px 0px 10px 0px;
-		/*min-width:60px;*/
-	}
-
-	#add_timeline_event .simple_form label
-	{
-		float:left;
-		font-family:Arial;
-		font-size:13px;
-		margin:10px 0px 6px 0px;
-		clear:both;		
-		padding:0px;
-	}
-
-	#add_timeline_event .simple_form div.input
-	{
-		float:left;
-		clear:left;
-	}
-
-	#add_timeline_event .timeline_event_start_date
-	{
-		margin:0px;
-	}
-
-	#add_timeline_event .timeline_event_end_date
-	{
-		margin:0px;
-	}
-
-	#add_timeline_event div
-	{
-		margin:10px;
-	}
-	
-	.ui-autocomplete
-	{
-		/*border:1px solid black !important;*/
-		list-style-type: none;
-		width:200px;
-		/*text-align: left;*/
-		/*position: absolute;
-   		left: 100px!important;
-    	top: 0!important;*/
-    	z-index:200;
-
-    	  position: fixed;
-		  top: 100%;
-		  left: 0;
-		  z-index: 1000;
-		  float: left;
-		  display: none;
-		  min-width: 160px;
-		  _width: 160px;
-		  padding: 4px 0;
-		  margin: 2px 0 0 0;
-		  list-style: none;
-		  background-color: #ffffff;
-		  border-color: #ccc;
-		  border-color: rgba(0, 0, 0, 0.2);
-		  border-style: solid;
-		  border-width: 1px;
-		  -webkit-border-radius: 5px;
-		  -moz-border-radius: 5px;
-		  border-radius: 5px;
-		  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-		  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-		  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-		  -webkit-background-clip: padding-box;
-		  -moz-background-clip: padding;
-		  background-clip: padding-box;
-		  *border-right-width: 2px;
-		  *border-bottom-width: 2px;
-
-		    .ui-menu-item > a.ui-corner-all {
-    display: block;
-    padding: 3px 15px;
-    clear: both;
-    font-weight: normal;
-    line-height: 18px;
-    color: #555555;
-    white-space: nowrap;
- 
-    &.ui-state-hover, &.ui-state-active {
-      color: #ffffff;
-      text-decoration: none;
-      background-color: #0088cc;
-      border-radius: 0px;
-      -webkit-border-radius: 0px;
-      -moz-border-radius: 0px;
-      background-image: none;
-    }
-  }
-	}
-
-		.ui-autocomplete .ui-menu-item
-		{
-			/*background-color:white;*/
-			/*width:200px;*/
-			/*height:30px;*/
-			/*border:1px solid black !important;*/
-			/*z-index:200;*/
-
-		}
-
-		.ui-autocomplete .ui-menu-item:last-child
-		{
-			/*background-color:white;*/
-			/*width:200px;*/
-			/*border-top:1px solid black !important;*/
-			/*border-left:1px solid black !important;*/
-			/*border-right:1px solid black !important;*/
-			/*z-index:200;*/
-		}
-
-		.ui-autocomplete .ui-menu-divider
-		{
-			/*border-top:1px solid black !important;*/
-		}
-
-		.ui-helper-hidden-accessible { display:none; }
-
-/*	.ui-autocomplete
-	{
-		border-top:5px solid transparent!important;
-	}*/
-
-
-/* Timeline Events Page */
-div.timeline-events-page { 
-	margin:50px 0px 0px 0px;
-}
-
-	div.timeline-events-page a {
-		text-decoration: none;
-	}
-
-	div.timeline-events-page table.my_events
-	{
-		border-top:1px solid black;
-		margin:20px 0px 0px 0px;
-		width:1100px;
-	} 
-
-	div.timeline-events-page table.my_events th
-	{
-		text-align: left;
-		font-family: Tahoma, Verdana, Segoe, sans-serif;
-	} 
-
-		div.timeline-events-page table.my_events td
-	{
-		font-family: Tahoma, Verdana, Segoe, sans-serif;
-		font-size:14px;
-	} 
-
-div.new_timeline_event_page 
-{
-
-}
-
-	div.new_timeline_event_page .simple_form label
-	{
-		float:left;
-		font-family:Arial;
-		font-size:13px;
-		margin:10px 0px 6px 0px;
-		clear:both;		
-		padding:0px;
-	}
-
-	div.new_timeline_event_page .simple_form div.input
-	{
-		float:left;
-		clear:left;
-	}
-
-
-/* Footer */
-
-div.footer
-{
-	width:100%;
-	background-color:black;
-	height:100px;
-
-	padding:0px 0px 0px 0px;
-}
 
 
 
-/* Footer End */
 
-/* Game Begin */
-.game-search
-{
-	/*background-color:red;*/
-	width:400px;
-	min-height: 400px;
-	margin:50px 0px 0px 0px;
-}
-
-	.game-search .label
-	{
-		margin:50px 0px 0px 0px;
-	}
-	
-	.game-search .input-field
-	{
-		width:398px;
-	}	
-
-.search-result
-{
-	/*background-color:green;*/
-	width:550px;
-	min-height: 400px;
-	margin:50px 0px 0px 0px;
-}
-
-/* Game End */
-
-/* buttons */
-.button
-{
-	border: 0;
-	/*background-color:black;*/
-	background-color:#5298C9;
-	/*background-color:gray;*/
-	color:white;
-	padding:14px;
-	font-size: 14px;
-	/*font-family:Arial;*/
-	font-family:tahoma;
-	margin:10px 0px 10px 0px;
-	min-width:30px;
-}
-
-/* button end */
 
 
 /* forms */
@@ -555,7 +123,8 @@ div.footer
 	width:326px;
 	background-color:#F0F0F0;
 	border:1px solid #CFCFCF;
-	font-size:30px;
+	height:40px;
+	font-size:24px;
 	font-family:Arial;
 	outline:none;
 }
@@ -604,3 +173,5 @@ div.footer
 {
 	clear:both;
 }
+
+

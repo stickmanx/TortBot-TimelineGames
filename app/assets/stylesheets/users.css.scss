@@ -1,0 +1,47 @@
+div.user_session {
+	margin:0px auto;
+	width:400px;
+
+
+	label {
+		float:left;
+		clear:both;
+		font-family:Arial;
+		font-size:13px;
+		margin:10px 0px 6px 0px;
+	}
+	div.form-inputs {
+
+		input {
+			float:left;
+			clear:both;
+			width:400px;
+			background-color:#F0F0F0;
+			border:1px solid #CFCFCF;
+			height:40px;
+			font-size:24px;
+			font-family:Arial;
+			outline:none;
+		}
+	}
+
+	div.form-actions {
+
+		input {
+			float:left;
+			clear:both;
+		}
+	}
+
+	div.user-links {
+		margin:20px 0px 0px 0px;
+		float:left;
+		clear:both;
+		a {
+			color: #2D2D2D;
+			font-family:Arial;
+		}
+	}
+
+
+}

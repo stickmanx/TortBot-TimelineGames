@@ -1,3 +1,83 @@
 // Place all the styles related to the games controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* index.html.erb ------------------------- */
+div.game-search {
+	/*background-color:red;*/
+	width:400px;
+	min-height: 400px;
+	margin:80px auto 0px auto;
+	.label {
+		margin:50px 0px 0px 0px;
+	}
+	.input-field {
+		width:398px;
+	}	
+}
+
+/* show.html.erb ----------------------------*/
+div.game {
+	width:500px;
+	font-family: Arial;
+	h2 {
+		padding:0px;
+		margin:20px 0px 0px 0px;
+		font-family: Arial;
+		font-size:26px;
+	}
+
+
+	.description-box {
+		width:500px;
+		height:60px;
+	}
+}
+
+
+div.game_descriptions {
+	/*border: 1px solid black;*/
+	width:550px;
+	font-family: Arial;
+	h2 {
+		padding:0px;
+		margin:20px 0px 0px 0px;
+		font-family: Arial;
+		font-size:26px;		
+	}
+
+	.description {
+		/*border: 1px solid black;*/
+		margin:10px 0px 10px 0px;
+		font-size:16px;
+		padding:10px;
+		background-color:#d4d4d4;
+		.context {
+			float:left;
+			p {
+				padding:0px;
+				margin:0px;
+				a {
+					font-size:12px;
+					color:#2D2D2D;
+					font-family:Arial;
+				}
+			}
+		}
+		.likes {
+			float:right;
+			div {
+				float:right;
+			}
+			p {
+				padding:0px;
+				margin:0px;
+				float:right;				
+			}
+		}
+		.by_user {
+			font-size:12px;
+		}
+	}
+	
+}

@@ -12,6 +12,10 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
+    @comment = Comment.new
+    @comments = Comment.where(game_id:params[:id])
+    @like = Like.new
+
   end
   
   def create

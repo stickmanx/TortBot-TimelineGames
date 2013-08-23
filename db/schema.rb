@@ -11,7 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130719110226) do
+ActiveRecord::Schema.define(:version => 20130804104441) do
+
+  create_table "comments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "game_id"
+    t.string   "context"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "friendships", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "friend_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "games", :force => true do |t|
     t.string   "name"
@@ -32,6 +47,14 @@ ActiveRecord::Schema.define(:version => 20130719110226) do
 
   add_index "image_links", ["game_id"], :name => "index_image_links_on_game_id"
   add_index "image_links", ["user_id"], :name => "index_image_links_on_user_id"
+
+  create_table "likes", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "likeable_id"
+    t.string   "likeable_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "systems", :force => true do |t|
     t.string   "name"

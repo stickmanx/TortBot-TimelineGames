@@ -1,22 +1,33 @@
 module MappedEvent
   class Mapped_Event
-    attr_accessor :game_id, :timeline_event_id, :name, :start_date, :end_date, :image, :system, :height, :y_position, :x_position, :color, :count, :completion
+    attr_accessor :game_id, 
+                  :timeline_event_id, 
+                  :name, 
+                  :start_date, 
+                  :end_date, 
+                  :image, 
+                  :system, 
+                  :height, 
+                  :y_position, 
+                  :x_position, 
+                  :color, 
+                  :completion
   
-    def initialize(game_id, name, start_date, end_date, image, system, max, intervals, systems, counter_count, timeline_event_id, completion)
+    def initialize(game_id, name, start_date, end_date, image, system, max, intervals, systems, counter_count, timeline_event_id, completion, page_type, current_user_id, token)
+      
       @game_id = game_id
       @timeline_event_id = timeline_event_id
-
       @name = name
       @start_date = start_date
       @end_date = end_date
 
-      puts "what is image?"
-      
       if image != nil
         @image = image
       else
         @image = nil
       end
+      
+      # image ? @image = nil : @image = image
 
       @system = system
       
@@ -28,7 +39,7 @@ module MappedEvent
       puts @color
       @completion = completion
       @event_id = "event"+counter_count.to_s
-      @content = content
+      @content = content(page_type, current_user_id, token)
 
     end
     
@@ -36,6 +47,11 @@ module MappedEvent
       def event_height(start_date, end_date)
         event_epoch = end_date.to_datetime.to_i - start_date.to_datetime.to_i
         height = (event_epoch / 31556926.0) * 400.0
+        # if height < 40
+        #   return 300
+        # else
+        #   return height
+        # end
       end
       
       def y_event_position(end_date, max, intervals)
@@ -56,31 +72,32 @@ module MappedEvent
         random_colors[rand(random_colors.length)]
       end
       
-      def content
-        string = "<a href='/timeline_events/"+@timeline_event_id.to_s+"/edit'><div id='"+@event_id+"' class='timeline_event' data-gameid='"+@game_id.to_s+"' style='z-index: 1; position: absolute; width:188px; height:"+@height.to_s+"px; padding: 0px; margin-top:40px; visibility: hidden;'><div style='margin:0 auto; width:161px;'>"
-
+      def content(page_type, current_user_id, token)
+        if page_type == "private"
+          string = "<a href='/timeline_events/"+@timeline_event_id.to_s+"/edit'><div id='"+@event_id+"' class='timeline_event' data-gameid='"+@game_id.to_s+"' style='z-index: 1; position: absolute; width:188px; height:"+@height.to_s+"px; padding: 0px; margin-top:40px; visibility: hidden;'><div style='margin:0 auto; width:161px;'>"
+        elsif page_type == "public"
+          string = "<a href='/games/"+@game_id.to_s+"' class='test_game'>\
+          <div id='"+@event_id+"' class='timeline_event' data-gameid='"+@game_id.to_s+"' style='z-index: 1; position: absolute; width:188px; height:"+@height.to_s+"px; padding: 0px; margin-top:40px; visibility: hidden;'>\
+          <div style='margin:0 auto; width:161px;'>\
+          <form action='/likes' method='post'>\
+          <input name='authenticity_token' value='"+token+"' type='hidden'>\
+          <input type='hidden' name='like[user_id]' value='"+current_user_id.to_s+"'>\
+          <input type='hidden' name='like[likeable_id]' value='"+@game_id.to_s+"'>\
+          <input type='hidden' name='like[likeable_type]' value='Game'>\
+          <input type='submit' value='like'>\
+          </form>"
+        end
         # puts @image
 
-        if @image
-          string = string + "<img src='"+@image+"' width=160px; margin:0 auto;'>"
-        end
-        
-        if @completion
-          string = string + "<p style='font-family:tahoma'>"+@completion.to_s+"% COMPLETE</p>"
-        end
-
+        string = string + "<img src='"+@image+"' width=160px; margin:0 auto;>" if @image
+        string = string + "<p style='font-family:tahoma'>"+@completion.to_s+"% COMPLETE</p>" if @completion
         string = string + "</div></div></a>"
-        
-
-        puts string
+      
+        # puts string
 
         return string
       end 
 
-      # def random_color()
-
-
-      # end
   end
   
 end

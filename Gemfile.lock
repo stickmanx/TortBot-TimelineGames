@@ -71,6 +71,8 @@ GEM
       activesupport (= 3.2.13)
       bundler (~> 1.0)
       railties (= 3.2.13)
+    rails-footnotes (3.7.9)
+      rails (>= 3.0.0)
     rails3-jquery-autocomplete (1.0.11)
       rails (~> 3.0)
     rails_12factor (0.0.2)
@@ -124,6 +126,7 @@ DEPENDENCIES
   nifty-generators
   pg (= 0.15.1)
   rails (= 3.2.13)
+  rails-footnotes (>= 3.7.9)
   rails3-jquery-autocomplete
   rails_12factor (= 0.0.2)
   sass-rails (~> 3.2.3)

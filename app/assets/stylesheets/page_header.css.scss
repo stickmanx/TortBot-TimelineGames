@@ -1,0 +1,42 @@
+/* Page Header Start*/
+
+div.page_header
+{
+	height:40px;
+	box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.15);
+	/*position:fixed;*/
+	margin:0px 0px 0px 0px;
+	width:100%;
+	z-index:0;
+	background-color:#ECECEC;
+	font-color:#d4d4d4;
+
+	/*border-bottom:1px solid #CCCCCC;*/
+	div {
+		width:1100px;
+		height:40px;
+		margin:0 auto;
+		position:relative;
+		div {
+			position:absolute;
+			/*background-color:green;*/
+			height:30px;
+			top:50%;
+			margin:-14px 0px 0px 0px;
+			width:1100px;
+		}
+	}
+	h2 {
+		margin:0px;
+		font-size:20px;
+		font-family: tahoma;
+		/*font-family: 'Strait', sans-serif;*/
+		/*font-family:Arial;*/
+		font-weight: 100;
+	}
+
+}
+
+
+
+/* Page Header End */

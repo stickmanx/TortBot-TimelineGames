@@ -1,0 +1,19 @@
+<% provide(:title, "Login") %>
+<% @page_title = "Login" %>
+<div class="user_session">
+
+	<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+	  <div class="form-inputs">
+	    <%= f.input :email, :label => "EMAIL", :required => false, :autofocus => true %>
+	    <%= f.input :password, :label => "PASSWORD", :required => false %>
+	  </div>
+
+	  <div class="form-actions">
+	    <%= f.button :submit, "Sign in", :class => "button" %>
+	  </div>
+	<% end %>
+
+	<div class="user-links">
+		<%= render "devise/shared/links" %>
+	</div>
+</div>

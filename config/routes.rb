@@ -1,5 +1,9 @@
 TimelineRails3::Application.routes.draw do
   
+  resources :likes, :only => [:create, :destroy]
+  resources :comments, :only => [:create, :destroy]
+  resources :friendships, :only => [:create, :destroy, :index, :show]
+
   get "home/index"
 
   get "game_search/games"
@@ -18,10 +22,14 @@ TimelineRails3::Application.routes.draw do
     end
   end 
   
-
-  resources :systems
-  resources :image_links
-  resources :timelines
+  resources :systems, :only => [:index, :new, :show]
+  resources :image_links, :only => [:new, :show, :index, :create]
+  
+  resources :timelines do
+    collection do
+      post 'display_user_timeline'
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

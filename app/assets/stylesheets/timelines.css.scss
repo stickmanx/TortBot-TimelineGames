@@ -1,3 +1,165 @@
 // Place all the styles related to the Timelines controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#canvas_console { // takes into account the system bar
+	height:40px;
+}
+
+/*.add_timeline_event_container*/
+#add_timeline_event {
+	border:3px solid black;
+	/*border-radius: 15px;*/
+	background-color:white;
+	position:fixed;
+	width:400px;
+	right:50%;
+	margin:70px -200px;
+	height:370px;
+	z-index:10;
+	a {
+		text-decoration: none;
+	}
+}
+
+	#add_timeline_event .close
+	{
+		border: 0;
+		background-color:black;
+		background-color:#5298C9;
+		color:white;
+		padding:14px;
+		font-size: 14px;
+		font-family:Arial;
+		margin:10px 0px 10px 0px;
+		/*min-width:60px;*/
+		&:hover {
+			background-color:#4988b4;
+		}
+
+	}
+
+	#add_timeline_event .simple_form label
+	{
+		float:left;
+		font-family:Arial;
+		font-size:13px;
+		margin:10px 0px 6px 0px;
+		clear:both;		
+		padding:0px;
+	}
+
+	#add_timeline_event input
+	{
+		float:left;
+		clear:left;
+	}
+
+	#add_timeline_event .timeline_event_start_date
+	{
+		margin:0px;
+	}
+
+	#add_timeline_event .timeline_event_end_date
+	{
+		margin:0px;
+	}
+
+	#add_timeline_event div
+	{
+		margin:10px;
+	}
+
+
+	
+	.ui-autocomplete
+	{
+		/*border:1px solid black !important;*/
+		list-style-type: none;
+		width:200px;
+		/*text-align: left;*/
+		/*position: absolute;
+   		left: 100px!important;
+    	top: 0!important;*/
+    	z-index:200;
+
+    	  position: fixed;
+		  top: 100%;
+		  left: 0;
+		  z-index: 1000;
+		  float: left;
+		  display: none;
+		  min-width: 160px;
+		  _width: 160px;
+		  padding: 4px 0;
+		  margin: 2px 0 0 0;
+		  list-style: none;
+		  background-color: #ffffff;
+		  border-color: #ccc;
+		  border-color: rgba(0, 0, 0, 0.2);
+		  border-style: solid;
+		  border-width: 1px;
+		  -webkit-border-radius: 5px;
+		  -moz-border-radius: 5px;
+		  border-radius: 5px;
+		  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+		  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+		  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+		  -webkit-background-clip: padding-box;
+		  -moz-background-clip: padding;
+		  background-clip: padding-box;
+		  *border-right-width: 2px;
+		  *border-bottom-width: 2px;
+		  font-size:12px !important;
+
+		    .ui-menu-item > a.ui-corner-all {
+/*    display: block;
+    padding: 3px 15px;
+    clear: both;
+    font-weight: normal;
+    line-height: 18px;
+    color: #555555;
+    white-space: nowrap;*/
+
+ 
+    &.ui-state-hover, &.ui-state-active {
+/*      color: #ffffff;
+      text-decoration: none;
+      background-color: #0088cc;
+      border-radius: 0px;
+      -webkit-border-radius: 0px;
+      -moz-border-radius: 0px;
+      background-image: none;*/
+    }
+  }
+	}
+
+		.ui-autocomplete .ui-menu-item
+		{
+			/*background-color:white;*/
+			/*width:200px;*/
+			/*height:30px;*/
+			/*border:1px solid black !important;*/
+			/*z-index:200;*/
+
+		}
+
+		.ui-autocomplete .ui-menu-item:last-child
+		{
+			/*background-color:white;*/
+			/*width:200px;*/
+			/*border-top:1px solid black !important;*/
+			/*border-left:1px solid black !important;*/
+			/*border-right:1px solid black !important;*/
+			/*z-index:200;*/
+		}
+
+		.ui-autocomplete .ui-menu-divider
+		{
+			/*border-top:1px solid black !important;*/
+		}
+
+		.ui-helper-hidden-accessible { display:none; }
+
+

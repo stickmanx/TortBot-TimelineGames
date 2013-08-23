@@ -1,28 +1,40 @@
+<% provide(:title, "My Timeline Events") %>
+<% @page_title = "MY TIMELINE EVENTS" %>
+<div class="line-break"></div>
 <div class="timeline-events-page">
-	<div class="line-break"></div>
 
-	<%= link_to "+ timeline event", new_timeline_event_path, :class=> "button" %>
-	<%= link_to "+ game", new_game_path, :class=> "button" %>
-	<%= link_to "+ system", new_system_path, :class=> "button" %>
-	<%= link_to "+ image", new_image_link_path, :class=> "button" %>
+	<%# link_to "+ timeline event", new_timeline_event_path, :class=> "button" %>
+	<%# link_to "+ game", new_game_path, :class=> "button" %>
+	<%# link_to "+ system", new_system_path, :class=> "button" %>
+	<%# link_to "+ image", new_image_link_path, :class=> "button" %>
 
-	<table class="my_events">
-		<thead>
-			<tr>
-				<th>game name</th>
-				<th>start date</th>
-				<th>end date</th>
-			</tr>
-		</thead>
-		<tbody>
-		<% @timeline_events.each do |event| %>
-			<tr>
-				<td><%= link_to event.game.name, edit_timeline_event_path(event.id) %></td>
-				<td><%= event.start_date %></td>
-				<td><%= event.end_date %></td>
-			</tr>
-		<% end %>
-		</tbody>
-	</table>
+	<% @systems.each_key do |system_name| %>
+		<h2><%= system_name %></h2>
+			<table class="my_events">
+				<thead>
+					<tr>
+						<th>Game name</th>
+						<th>Start date</th>
+						<th>End date</th>
+						<th>Action(s)</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @timeline_events.each do |timeline_event| %>
+						<% if timeline_event.game.system.name == system_name %>
+							<tr>
+								<td><%= link_to timeline_event.game.name, edit_timeline_event_path(timeline_event.id) %></td>
+								<td><%= timeline_event.start_date %></td>
+								<td><%= timeline_event.end_date %></td>
+								<td>
+									<%= link_to "Remove", timeline_event_path(timeline_event.id), :method => :delete %>
 
+								</td>
+							</tr>
+						<% end %>
+					<% end %>
+				</tbody>
+			</table>
+	<% end %>
+	
 </div>

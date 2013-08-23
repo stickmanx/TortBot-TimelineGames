@@ -1,6 +1,7 @@
 <%= simple_form_for @image_link do |f| %>
 	<%= f.input :url %>
-	<%= f.association :game %>
+	<input type="text" class="game_search_image_link input-field pull-left clear" name="game_name">
+	<div id="game_id"></div>
 	<%= f.hidden_field :user_id, :value => current_user.id %>
 	<%= f.button :submit, :class=> "button"%>
 <% end %>

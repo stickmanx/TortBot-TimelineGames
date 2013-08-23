@@ -4,9 +4,9 @@ class TimelineEventsController < ApplicationController
   include MappedEvent
   
   def index
-    @page_title = "MY TIMELINE EVENTS"
+    @timeline_events = TimelineEvent.includes(:game).where(user_id:current_user.id) if user_signed_in?
 
-    @timeline_events = TimelineEvent.where(user_id:current_user.id) if user_signed_in?
+    @systems = @timeline_events.map {|event| event.game}.map {|game| game.system }.group_by {|system| system.name}
       
     @timeline_event = TimelineEvent.new
   end
@@ -16,17 +16,19 @@ class TimelineEventsController < ApplicationController
   end
   
   def edit
-    @page_title = "EDIT EVENT"
-
     @timeline_event = TimelineEvent.find(params[:id])
+    @image_link = ImageLink.new
   end
 
   def update
     timeline_event = TimelineEvent.find(params[:id])
+    puts timeline_event
     if timeline_event.update_attributes(params[:timeline_event])
-      redirect_to timeline_event_path(timeline_event.id)
+      redirect_to :back
+      # redirect_to timeline_event_path(timeline_event.id)
     else
-      render "edit"
+      redirect_to :back
+      # render "edit"
     end
   end
 
@@ -36,8 +38,9 @@ class TimelineEventsController < ApplicationController
   
   def create
     timeline_event = TimelineEvent.new(params[:timeline_event])
-    
+    puts timeline_event
     respond_to do |format|
+      # if timeline_event.has_game?(timeline_event.name) && timeline_event.save
       if timeline_event.save
         format.json {
           render:json => {:status => "success"}
@@ -62,6 +65,7 @@ class TimelineEventsController < ApplicationController
   def display_timeline
     # puts current_user.id
     events = TimelineEvent.where(user_id:(current_user.id)).all
+
     # events = TimelineEvent.all
     # puts events
     # Mapped_Event.new.test_output
@@ -96,6 +100,10 @@ class TimelineEventsController < ApplicationController
       timeline.merge!({:system_count=> system_count})
       timeline.merge!({:systems=> systems})
     
+
+      # console_content = "<a href=''><div id='console1' style='width:100px; height:300px; background-color:red; z-index:2;'></div></a>"
+
+      # timeline.merge!({:content=> console_content})
     
       # debug timeline hash
       # puts timeline
@@ -118,7 +126,7 @@ class TimelineEventsController < ApplicationController
         end
 
         # create new mapped event to timeline
-        new_event = Mapped_Event.new(event.game.id, event.game.name, event.start_date, event.end_date, image, event.game.system.name, max, intervals, systems, counter, event.id, event.completion)
+        new_event = Mapped_Event.new(event.game.id, event.game.name, event.start_date, event.end_date, image, event.game.system.name, max, intervals, systems, counter, event.id, event.completion, "private", current_user.id, form_authenticity_token)
         puts new_event
         # add events to container
         processed_events.push new_event

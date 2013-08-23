@@ -5,8 +5,8 @@
 			<label for="game_name" class="pull-left label">Search Games</label>
 			<input type="text" class="game_search input-field pull-left clear" name="game_name">
 			<div id="game_id"></div>
-			<%= f.input :start_date, :start_year => 1970, :end_year => Date.today.year %>
-			<%= f.input :end_date, :start_year => 1970, :end_year => Date.today.year %>
+			<%= f.input :start_date, :start_year => 2005, :end_year => Date.today.year %>
+			<%= f.input :end_date, :start_year => 2005, :end_year => Date.today.year %>
 			<%= f.button :submit, :value => "create timeline event", :class=> "button pull-left clear" %>
 		<% end %>
 </div>

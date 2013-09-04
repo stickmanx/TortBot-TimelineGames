@@ -17,16 +17,14 @@ class TimelinesController < ApplicationController
   end
 
   def display_user_timeline
-		events = TimelineEvent.where(user_id:params[:user_id]).all
+	events = TimelineEvent.where(user_id:params[:user_id]).all
 
     timeline = process_timeline(events) 
     updated_events = process_events(events, timeline[:max], timeline[:interval], timeline[:systems])
     
-    
     respond_to do |format|
       format.json {
-        render :json => {hi: "Hello from the backend!", timeline: timeline, events: updated_events}
-        # render :json => {hi: "Hello from the backend!"}
+        render :json => {timeline: timeline, events: updated_events}
       } 
   	end
   end

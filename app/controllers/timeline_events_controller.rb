@@ -56,7 +56,7 @@ class TimelineEventsController < ApplicationController
       redirect_to timelines_path
     end    
 
-    # AJAX
+    # AJAX (disabled)
     # respond_to do |format|
     #   # if timeline_event.has_game?(timeline_event.name) && timeline_event.save
     #   if timeline_event.save
@@ -76,12 +76,9 @@ class TimelineEventsController < ApplicationController
      timeline_event.destroy
   
      redirect_to timeline_events_path
- 
-  
   end
   
   def display_timeline
-    # puts current_user.id
     events = TimelineEvent.where(user_id:(current_user.id)).all
 
     # events = TimelineEvent.all
@@ -91,15 +88,13 @@ class TimelineEventsController < ApplicationController
     timeline = process_timeline(events) 
     updated_events = process_events(events, timeline[:max], timeline[:interval], timeline[:systems])
     
-    
     respond_to do |format|
       format.json {
-        render :json => {hi: "Hello from the backend!", timeline: timeline, events: updated_events}
+        render :json => {timeline: timeline, events: updated_events}
+        # Debug ------------------------------------------
         # render :json => {hi: "Hello from the backend!"}
       }   
     end
-    
-
   end
   
   private

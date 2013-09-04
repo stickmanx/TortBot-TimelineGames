@@ -3,11 +3,6 @@
 <div class="line-break"></div>
 <div class="timeline-events-page">
 
-	<%# link_to "+ timeline event", new_timeline_event_path, :class=> "button" %>
-	<%# link_to "+ game", new_game_path, :class=> "button" %>
-	<%# link_to "+ system", new_system_path, :class=> "button" %>
-	<%# link_to "+ image", new_image_link_path, :class=> "button" %>
-
 	<% @systems.each_key do |system_name| %>
 		<h2><%= system_name %></h2>
 			<table class="my_events">
@@ -28,7 +23,6 @@
 								<td><%= timeline_event.end_date %></td>
 								<td>
 									<%= link_to "Remove", timeline_event_path(timeline_event.id), :method => :delete %>
-
 								</td>
 							</tr>
 						<% end %>

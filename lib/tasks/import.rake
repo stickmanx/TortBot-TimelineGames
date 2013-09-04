@@ -9,7 +9,7 @@ task :import_systems => :environment do
   csv.each do |row|
   	System.create!(row.to_hash)
   end
-  
+
 end
 
 

@@ -3,7 +3,6 @@
 
 var stage, interval_stage, system_stage;
 
-
 function interval_init(intervals, year_end) {
     "use strict";
     interval_stage = new createjs.Stage("intervals");
@@ -67,23 +66,25 @@ $(document).ready(function() {
 			$(this).attr('action'),
 			$(this).serialize(),
 			function(data) {
-				console.log(data);
-				console.log(data.timeline)
-				console.log("Systems: "+data.timeline.systems)
-				console.log("Console_Content: "+data.timeline.content)
+				// Debug Code ---------------------------------------------
+				// console.log(data);
+				// console.log(data.timeline)
+				// console.log("Systems: "+data.timeline.systems)
+				// console.log("Console_Content: "+data.timeline.content)
 				
 				for(i in data.events) {
-					console.log("Game ID: "+data.events[i].game_id)
-					console.log("Name: "+data.events[i].name);
-					console.log("Start Date: "+data.events[i].start_date);
-					console.log("End Date: "+data.events[i].end_date);
-					console.log("Image: "+data.events[i].image);
-					console.log("System: "+data.events[i].system);
-					console.log("Height: "+data.events[i].height);		
-					console.log("Y Position: "+data.events[i].y_position);
-					console.log("X Position: "+data.events[i].x_position);	
-					console.log("Content: "+data.events[i].content);
-					console.log("Event ID: "+data.events[i].event_id);
+					// Debug ---------------------------------------------
+					// console.log("Game ID: "+data.events[i].game_id)
+					// console.log("Name: "+data.events[i].name);
+					// console.log("Start Date: "+data.events[i].start_date);
+					// console.log("End Date: "+data.events[i].end_date);
+					// console.log("Image: "+data.events[i].image);
+					// console.log("System: "+data.events[i].system);
+					// console.log("Height: "+data.events[i].height);		
+					// console.log("Y Position: "+data.events[i].y_position);
+					// console.log("X Position: "+data.events[i].x_position);	
+					// console.log("Content: "+data.events[i].content);
+					// console.log("Event ID: "+data.events[i].event_id);
 					// console.log(data.events[i].color);		
 					
 					$('#canvas_container').prepend(data.events[i].content);
@@ -101,11 +102,6 @@ $(document).ready(function() {
 			$('#canvas_area').html("<canvas id='myCanvas' width='1100' height='"+((data.timeline.interval*400)+100)+"'></canvas>");
 			// $('#canvas_area').html("<canvas id='myCanvas' width='"+((data.timeline.system_count*200)+300)+"' height='"+((data.timeline.interval*400)+100)+"'></canvas>");
 			$('#canvas_area').hide();
-			
-			// preprend div, comes from backend
-			// details also need to be in th events so that it can be called from the javascript side
-			
-			// $('#canvas_container').prepend("<div id='drink' style='z-index: 1; position: absolute; background-color: #FF0000; width:180px; height:260px; padding: 5px; visibility: hidden;'><b>Hello! I'm an HTML div.</b><br/><br/>I am not rendered to the canvas, but I can be included in the display list for positioning and transformations.<br/><br/>This means I can contain any HTML content (rich text, forms, video, etc), but I'm not a full part of the EaselJS display list.<br/><br/><a href='http://easeljs.com/'>This is a link</a><img src='http://content.mycutegraphics.com/graphics/cats/yellow-cat-face.png'></div>")
 			
 			init(data.timeline.interval, data.timeline.system_count, data.timeline.systems, data.timeline.max, data.events);
 			
@@ -131,16 +127,13 @@ $(document).ready(function() {
 	$('#add_timeline_event').hide();
 	
 	$('#canvas_console').on('click', '#button_add_event', function() {
-	// 	$('#add_timeline_event').fadeIn();
-	// });
-	//$('#button_add_event').click(function() {
 		$('#add_timeline_event').fadeIn();
 	});
 
 	// Close Add Timeline Event
 	// up top
 
-	// Add Timeline Ajax
+	// Add Timeline Ajax (Disabled)
 	// $('#new_timeline_event_form').submit(function() {
 	// 	console.log("Test");
 	// 	$.post(
@@ -155,24 +148,19 @@ $(document).ready(function() {
 	// 	return false;
 	// });
 
-	// Add Timeline Event Ajax (needs ajax in the back)
+	// Add Timeline Event Ajax (Disabled, needs ajax in the back)
 	// $('#new_timeline_event_form').submit(function() {
 	// 	
 	// 	$('#display_canvas').submit();
 	// 	return false;
 	// })
 
-	
 	// autosearch with ID
   $(".game_search").autocomplete({
 		source:"/game_search/games",
 		select: function(event, ui) {
 			console.log(ui.item.id)
 			$('#game_id').html("<input type='hidden' name='timeline_event[game_id]' value="+ui.item.id+" >")
-			// console.log( ui.item ? 
-			// 	"Selected" + ui.item.id :
-			// 	"Nothing was selected" + this.value );
-
 		}
 	});
 
@@ -181,10 +169,6 @@ $(document).ready(function() {
 		select: function(event, ui) {
 			console.log(ui.item.id)
 			$('#game_id').html("<input type='hidden' name='image_link[game_id]' value="+ui.item.id+" >")
-			// console.log( ui.item ? 
-			// 	"Selected" + ui.item.id :
-			// 	"Nothing was selected" + this.value );
-
 		}
 	});
 
@@ -199,7 +183,10 @@ $(document).ready(function() {
       changeYear: true,
       minDate: new Date(2005, 1 - 1, 1),
       maxDate: new Date(2014, 1 - 1, 1),
-      dateFormat: "yy-mm-dd"
+      dateFormat: "yy-mm-dd",
+      onClose: function( selectedDate ) {
+      	$( ".enddatepicker" ).datepicker("option", "minDate", selectedDate);
+      }
     });
 
   	// date pickers for both editing and creating new timeline events
@@ -208,7 +195,10 @@ $(document).ready(function() {
       changeYear: true,
       minDate: new Date(2005, 1 - 1, 1),
       maxDate: new Date(2014, 1 - 1, 1),
-      dateFormat: "yy-mm-dd"
+      dateFormat: "yy-mm-dd",
+      onClose: function( selectedDate ) {
+      	$( ".startdatepicker" ).datepicker("option", "maxDate", selectedDate);
+      }
     });
 
     // image selection for a timeline event
@@ -220,5 +210,4 @@ $(document).ready(function() {
     		});
     	}
     });
-
 });

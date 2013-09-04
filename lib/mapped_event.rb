@@ -21,13 +21,7 @@ module MappedEvent
       @start_date = start_date
       @end_date = end_date
 
-      if image != nil
-        @image = image
-      else
-        @image = nil
-      end
-      
-      # image ? @image = nil : @image = image
+      image != nil ? @image = image : @image = nil
 
       @system = system
       
@@ -47,11 +41,12 @@ module MappedEvent
       def event_height(start_date, end_date)
         event_epoch = end_date.to_datetime.to_i - start_date.to_datetime.to_i
         height = (event_epoch / 31556926.0) * 400.0
-        # if height < 40
-        #   return 300
-        # else
-        #   return height
-        # end
+        # min height of event
+        if height < 40
+          return 300
+        else
+          return height
+        end
       end
       
       def y_event_position(end_date, max, intervals)
@@ -65,7 +60,7 @@ module MappedEvent
       
       def assign_color
 
-        # 49 -- 48
+        # 49 -- 48 Color Choices
         random_color = Array.new
         random_colors = ["#59955C", "#6CA870", "#80B584", "#5B5BFF", "#7373FF", "#FF2626", "#FF5353", "#5EAE9E", "#74BAAC"]
 
@@ -76,16 +71,9 @@ module MappedEvent
         if page_type == "private"
           string = "<a href='/timeline_events/"+@timeline_event_id.to_s+"/edit'><div id='"+@event_id+"' class='timeline_event' data-gameid='"+@game_id.to_s+"' style='z-index: 1; position: absolute; width:188px; height:"+@height.to_s+"px; padding: 0px; margin-top:40px; visibility: hidden;'><div style='margin:0 auto; width:161px;'>"
         elsif page_type == "public"
-          string = "<a href='/games/"+@game_id.to_s+"' class='test_game'>\
+          string = "<a href='/games/"+@game_id.to_s+"' class='tooltip_game'>\
           <div id='"+@event_id+"' class='timeline_event' data-gameid='"+@game_id.to_s+"' style='z-index: 1; position: absolute; width:188px; height:"+@height.to_s+"px; padding: 0px; margin-top:40px; visibility: hidden;'>\
-          <div style='margin:0 auto; width:161px;'>\
-          <form action='/likes' method='post'>\
-          <input name='authenticity_token' value='"+token+"' type='hidden'>\
-          <input type='hidden' name='like[user_id]' value='"+current_user_id.to_s+"'>\
-          <input type='hidden' name='like[likeable_id]' value='"+@game_id.to_s+"'>\
-          <input type='hidden' name='like[likeable_type]' value='Game'>\
-          <input type='submit' value='like'>\
-          </form>"
+          <div style='margin:0 auto; width:161px;'>"
         end
         # puts @image
 

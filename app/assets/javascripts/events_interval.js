@@ -7,7 +7,6 @@ var p = Interval.prototype = new createjs.Container(); // inherit from Container
 
 p.label;
 p.background;
-p.count = 0;
 
 p.Container_initialize = p.initialize; // overrides container constructor with custom constructor
 p.initialize = function(label, color, width, height) { // custom constructor
@@ -20,45 +19,18 @@ p.initialize = function(label, color, width, height) { // custom constructor
 	text.textBaseline = "top";
 	text.textAlign = "center";
 	
-	// var width = text.getMeasuredWidth()+30;
-	// var height = text.getMeasuredHeight()+20;
-	
 	this.background = new createjs.Shape();
 	this.background.graphics.beginFill(color).drawRoundRect(0,0,width,height,0);
 	
 	text.x = width/2;
 	text.y = 10;
 
-	// this.regX = width;
-	//this.regY = height; // change anchor point to the bottom left
+	// change anchor point to the bottom left
+	//this.regX = width;
+	//this.regY = height; 
 	
 	this.addChild(this.background,text); 
-	// this.addEventListener("click", this.handleClick);  // listen to clicks
-	// this.addEventListener("mouseover", this.handleMouseover);
-	// this.addEventListener("tick", this.handleTick); // makes it blink
-	//p.alpha = .1;
 } 
-
-p.handleClick = function (event) {    
-	var target = event.target;
-	alert("You clicked on a button: "+target.label);
-	$('#test').html("<p>Test Works!</p>");
-} 
-
-p.handleTick = function(event) {       
-	p.alpha = Math.cos(p.count++*0.1)*0.4+0.6;
-	//console.log(Math.cos(p.count++*0.1)*0.4+0.6);
-}
-
-p.handleMouseover = function(event) {
-	console.log("moused over test");
-	console.log(event.target.label);
-	
-	// alert("test");
-	
-	
-	// do some kind of post to get more information
-}
 
 window.Interval = Interval; // assigns the class back into the global (window) scope, to make it available for the application
 }());

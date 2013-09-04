@@ -24,17 +24,12 @@ p.initialize = function(label, color, width, height, image, event_id) { // custo
 	this.background.graphics.beginFill(color).drawRoundRect(0,0,width,height,2);
 	this.background.regX = 0;
 	this.background.regY = 0;
-	
-	// 
-	// var game_pic = new createjs.Bitmap(image);
-
-	// 
 
 	text.x = width/2;
 	text.y = 10;
 	console.log("inside the events timeline event");
 	console.log(event_id);
-	// var content = new createjs.DOMElement("foo");
+
 	var content = new createjs.DOMElement(document.getElementById(event_id));
 	content.regX = 0;
 	content.regY = 0;
@@ -49,19 +44,10 @@ p.handleClick = function (event) {
 	alert("You clicked on a button: "+target.label);
 } 
 
-p.handleTick = function(event) {       
-	p.alpha = Math.cos(p.count++*0.1)*0.4+0.6;
-	//console.log(Math.cos(p.count++*0.1)*0.4+0.6);
-}
-
 p.handleMouseover = function(event) {
 	console.log("moused over test");
 	console.log(event.target.label);
-	
-	// alert("test");
-	
-	
-	// do some kind of post to get more information
+
 }
 
 window.Timeline_event = Timeline_event; // assigns the class back into the global (window) scope, to make it available for the application

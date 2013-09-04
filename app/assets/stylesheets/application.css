@@ -18,19 +18,14 @@ body
 }
 
 .container
-{
-	
+{	
 	margin:0 auto;
-	/*background-color: #F0F0F0;*/
-	/*background-image: url("binding_dark.png");*/
-	/*background-image: url("../images/binding_dark.png");*/
 }
 
 div.splash_title 
 {
 	position:absolute;
 	margin:-280px 0px 0px 470px;
-
 }
 
 	div.splash_title h1
@@ -47,12 +42,7 @@ div.splash_title
 		font-family: 'Geo', Impact, sans-serif;
 	}
 
-
-
-
-/* End Header*/
-
-
+/* End Splash Page */
 
 .content_holder
 {
@@ -66,7 +56,6 @@ div.splash_title
 		/*position:fixed;*/
 		z-index:2;
 		background-color:#2D2D2D;
-
 	}
 
 	.content_left
@@ -99,17 +88,6 @@ div.splash_title
 			
 		}
 
-
-
-
-
-
-
-
-
-
-
-
 /* forms */
 .label
 {
@@ -134,43 +112,35 @@ div.splash_title
 
 /* General Purpose Styling */
 
-.remove_text_dec
-{
+.remove_text_dec {
 	text-decoration: none;
 }
 
-.right
-{
+.right {
 	right:0;
 }
 
-.line-break
-{
+.line-break {
 	border-bottom: 1px solid #5398C9;
 }
 
-.vertical-break-line
-{
+.vertical-break-line {
 	border-right: 1px solid #5398C9;
 }
 
-.center
-{
+.center {
 	margin:0px auto;
 }
 
-.pull-right
-{
+.pull-right {
 	float:right;
 }
 
-.pull-left
-{
+.pull-left {
 	float:left;
 }
 
-.clear
-{
+.clear {
 	clear:both;
 }
 
